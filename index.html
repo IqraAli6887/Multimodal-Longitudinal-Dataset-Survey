@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="LoMED — a cross-domain survey of longitudinal modeling approaches, evaluation practices, and datasets across 149 studies." />
+  <meta name="theme-color" content="#07111f" />
+  <title>LoMED — Longitudinal Modeling Survey</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LoMED home"><span class="brand-mark">L</span><span>LoMED</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#overview">Overview</a><a href="#taxonomy">Taxonomy</a><a href="#findings">Findings</a><a href="#explorer">Explorer</a><a href="#methodology">Methodology</a>
+    </nav>
+    <a class="header-cta" href="#explorer">Explore 149 studies</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="eyebrow"><span class="dot"></span> Cross-domain longitudinal AI survey</div>
+      <h1><span>LoMED</span><br/>Longitudinal data is not longitudinal evidence.</h1>
+      <p class="hero-copy">A structured review of <strong>149 studies</strong> spanning computational health, biomedical signal processing, multimodal systems, and longitudinal NLP—focused on the gap between what models claim and what evaluation actually establishes.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#explorer">Explore the survey <span>→</span></a>
+        <!-- Replace # below with the final arXiv URL when the paper is available. -->
+        <a class="button button-secondary button-arxiv" href="#" aria-label="arXiv paper link — add URL later">arXiv <span>↗</span></a>
+        <a class="button button-secondary" href="survey-data.csv" download>Download CSV</a>
+      </div>
+      <div class="hero-meta"><span>2019–2025</span><span>IEEE Xplore + ACL Anthology</span><span>Search freeze: 15 Mar 2025</span></div>
+
+      <div class="signal-card" role="img" aria-label="LoMED central message">
+        <div class="signal-label">The central distinction</div>
+        <div class="signal-flow"><span>Longitudinal data</span><b>≠</b><span>Longitudinal models</span><b>≠</b><span>Longitudinal evidence</span></div>
+        <div class="signal-track"><i style="--w:87.2%"></i><em>87.2% sequential modeling</em></div>
+        <div class="signal-track low"><i style="--w:8.7%"></i><em>8.7% temporal splits</em></div>
+      </div>
+    </section>
+
+    <section class="section-shell stats-strip" id="overview" aria-label="Key survey statistics">
+      <article><strong>149</strong><span>included studies</span><small>from 815 retrieved records</small></article>
+      <article><strong>87.2%</strong><span>sequential modeling</span><small>130 of 149 studies</small></article>
+      <article><strong>8.7%</strong><span>temporal split</span><small>chronology-preserving evaluation</small></article>
+      <article><strong>4.7%</strong><span>prospective validation</span><small>7 of 149 studies</small></article>
+      <article class="accent-stat"><strong>22.1%</strong><span>claim-relevant coverage</span><small>71 / 321 applicable pairs</small></article>
+    </section>
+
+    <section class="section-shell story-grid">
+      <div class="section-heading">
+        <span class="kicker">Why LoMED</span>
+        <h2>Longitudinal learning is advancing faster than longitudinal evaluation.</h2>
+        <p>Repeated observations create distinct requirements around chronology, subject dependence, missingness, cross-modal alignment, uncertainty, and transfer. LoMED audits whether the evidence reported in each study matches the form of generalization it claims.</p>
+      </div>
+      <div class="glass-panel quote-panel">
+        <div class="quote-mark">“</div>
+        <p>Processing repeated observations alone does not establish longitudinal generalization.</p>
+        <div class="quote-caption">LoMED taxonomy principle</div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="taxonomy">
+      <div class="section-heading centered">
+        <span class="kicker">Unified taxonomy</span>
+        <h2>From observation regime to evaluation requirement</h2>
+        <p>LoMED links how data is collected, what temporal evidence it contains, what a model tries to infer, how it represents time, and what evaluation is needed to support the resulting claim.</p>
+      </div>
+      <div class="taxonomy-flow">
+        <article><span>01</span><div class="tax-icon">◫</div><h3>Observation regime</h3><p>Regular cohorts, irregular EHRs, sparse behavioral histories, asynchronous multimodal records.</p></article>
+        <div class="tax-arrow">→</div>
+        <article><span>02</span><div class="tax-icon">⌁</div><h3>Temporal evidence</h3><p>Repeated visits, unequal gaps, evolving histories, and cross-modal observations.</p></article>
+        <div class="tax-arrow">→</div>
+        <article><span>03</span><div class="tax-icon">◎</div><h3>Temporal objective</h3><p>Trajectory classification, transition detection, forecasting, summarization, progression.</p></article>
+        <div class="tax-arrow">→</div>
+        <article><span>04</span><div class="tax-icon">⌘</div><h3>Modeling bias</h3><p>Subject effects, time-aware updates, chronology/history selection, cross-modal alignment.</p></article>
+        <div class="tax-arrow">→</div>
+        <article class="tax-final"><span>05</span><div class="tax-icon">✓</div><h3>Evaluation requirement</h3><p>Subject-disjoint, temporal, robustness, calibration, external, or prospective evidence.</p></article>
+      </div>
+    </section>
+
+    <section class="section-shell findings" id="findings">
+      <div class="section-heading">
+        <span class="kicker">Evaluation audit</span>
+        <h2>The modeling–evidence gap, at a glance</h2>
+        <p>Corpus-wide prevalence shows which validation practices are reported. Claim-conditioned coverage asks a stricter question: when a validation dimension is actually motivated by a study’s coded claim or challenge, is it present?</p>
+      </div>
+      <div class="findings-grid">
+        <div class="glass-panel chart-panel">
+          <div class="panel-head"><div><small>Corpus-wide</small><h3>Reported validation practices</h3></div><span>n = 149</span></div>
+          <div id="validation-bars" class="bar-chart"></div>
+        </div>
+        <div class="glass-panel chart-panel">
+          <div class="panel-head"><div><small>Claim-conditioned</small><h3>Evaluation coverage</h3></div><span>descriptive</span></div>
+          <div id="coverage-bars" class="bar-chart coverage"></div>
+          <p class="chart-note">Coverage is not an overall study-quality score; applicability is conditioned on coded claims and challenges.</p>
+        </div>
+      </div>
+      <div class="insight-grid">
+        <article><span class="insight-no">01</span><h3>Joint evidence is rare</h3><p>Only 7 studies combine subject and temporal evaluation, 15 combine subject and external evaluation, and <strong>none combine temporal and external validation</strong>.</p></article>
+        <article><span class="insight-no">02</span><h3>Handling ≠ robustness</h3><p>Among 47 studies facing irregular intervals, missing visits, or sparse observations, 31 identify a handling strategy—but only 17 both handle the issue and test robustness.</p></article>
+        <article><span class="insight-no">03</span><h3>Transparency ≠ temporal validity</h3><p>Interpretability appears in 56 studies, yet only 4 of those use temporal splits and just 1 conducts prospective validation.</p></article>
+      </div>
+    </section>
+
+    <section class="section-shell landscape">
+      <div class="section-heading centered">
+        <span class="kicker">Corpus landscape</span><h2>149 studies across domains, years, and applications</h2>
+      </div>
+      <div class="landscape-grid">
+        <div class="glass-panel source-panel"><div class="panel-head"><div><small>Source composition</small><h3>Cross-domain corpus</h3></div></div><div class="donut-wrap"><div class="donut" aria-hidden="true"><div><strong>149</strong><span>papers</span></div></div><div class="legend"><p><i class="ieee"></i><span>IEEE Xplore</span><strong>132</strong></p><p><i class="acl"></i><span>ACL Anthology</span><strong>17</strong></p></div></div></div>
+        <div class="glass-panel year-panel"><div class="panel-head"><div><small>Publication year</small><h3>Studies in the final corpus</h3></div></div><div id="year-chart" class="year-chart"></div></div>
+        <div class="glass-panel area-panel"><div class="panel-head"><div><small>Selected mapped applications</small><h3>Where longitudinal modeling is used</h3></div></div><div id="area-list" class="area-list"></div></div>
+      </div>
+    </section>
+
+    <section class="explorer-section" id="explorer">
+      <div class="section-shell">
+        <div class="section-heading explorer-heading">
+          <div><span class="kicker">Interactive survey</span><h2>Explore all 149 studies</h2><p>Search the coded corpus and inspect each paper’s data, task, temporal setup, model, evaluation, challenges, and reproducibility details.</p></div>
+          <div class="download-stack"><a href="survey-data.csv" download>CSV ↓</a><a href="survey-data.md" download>Full coded table ↓</a></div>
+        </div>
+        <div class="explorer-shell">
+          <div class="toolbar">
+            <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search title, author, dataset, task…" autocomplete="off" /></label>
+            <select id="source-filter" aria-label="Filter by source"><option value="">All sources</option></select>
+            <select id="year-filter" aria-label="Filter by year"><option value="">All years</option></select>
+            <select id="area-filter" aria-label="Filter by application"><option value="">All applications</option></select>
+            <select id="modality-filter" aria-label="Filter by modality"><option value="">All modalities</option></select>
+            <select id="validation-filter" aria-label="Filter by validation practice"><option value="">Any validation</option><option value="subject">Subject-level split</option><option value="temporal">Temporal split</option><option value="external">External validation</option><option value="prospective">Prospective validation</option><option value="robustness">Robustness analysis</option><option value="calibration">Calibration analysis</option></select>
+            <button id="reset-filters" type="button">Reset</button>
+          </div>
+          <div class="results-meta"><span id="results-count">Loading studies…</span><div class="view-toggle" aria-label="Result view"><button class="active" data-view="cards">Cards</button><button data-view="compact">Compact</button></div></div>
+          <div id="study-results" class="study-results" aria-live="polite"></div>
+          <div class="pagination"><button id="prev-page" type="button">← Previous</button><span id="page-status"></span><button id="next-page" type="button">Next →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="methodology">
+      <div class="section-heading centered"><span class="kicker">Survey protocol</span><h2>A transparent screening and coding pipeline</h2><p>English-language full papers from 2019 through the 15 March 2025 search freeze were collected from IEEE Xplore and the ACL Anthology, then standardized and screened through a common pipeline.</p></div>
+      <div class="screening-flow">
+        <article><strong>815</strong><span>Retrieved</span><small>780 IEEE · 35 ACL</small></article><div>→</div>
+        <article><strong>551</strong><span>Automated filter</span><small>523 IEEE · 28 ACL</small></article><div>→</div>
+        <article><strong>520</strong><span>Manual screen</span><small>500 IEEE · 20 ACL</small></article><div>→</div>
+        <article class="included"><strong>149</strong><span>Included</span><small>132 IEEE · 17 ACL</small></article>
+      </div>
+      <div class="method-grid">
+        <article><div class="method-icon">⌕</div><h3>Search concepts</h3><p>Repeated observations, temporal progression, trajectory modeling, state change, longitudinal prediction, and timeline-level analysis.</p></article>
+        <article><div class="method-icon">▤</div><h3>Paper-level coding</h3><p>Data, models, temporal challenges, evaluation, interpretability, deployment, missingness, reproducibility, and validation strategies.</p></article>
+        <article><div class="method-icon">⟷</div><h3>Auditable rationale</h3><p>Judgment-based labels are paired with evidence/rationale fields to preserve a traceable link to source-paper methodology.</p></article>
+        <article><div class="method-icon">⚑</div><h3>Important limitation</h3><p>The corpus was coded by one primary coder; evidence fields improve auditability but do not substitute for independent double-coding.</p></article>
+      </div>
+    </section>
+
+    <section class="guidance-section">
+      <div class="section-shell guidance-grid">
+        <div class="section-heading"><span class="kicker">Evaluation guidance</span><h2>Match evidence to the claim.</h2><p>LoMED argues against a universal checklist. Instead, validation should be conditioned on the form of longitudinal generalization a study actually claims.</p></div>
+        <div class="guidance-list">
+          <article><span>Temporal claims</span><strong>Chronology-preserving evaluation</strong><small>Temporal / horizon splits and leakage checks</small></article>
+          <article><span>Cross-subject claims</span><strong>Subject-disjoint evaluation</strong><small>Separate participants or users across splits</small></article>
+          <article><span>Missingness / shift claims</span><strong>Stress testing & robustness</strong><small>Vary observation process, missingness, or domain</small></article>
+          <article><span>Uncertainty claims</span><strong>Calibration analysis</strong><small>Evaluate probability quality, not only point metrics</small></article>
+          <article><span>Transfer / deployment claims</span><strong>External or prospective validation</strong><small>Test new settings, cohorts, sites, or future deployment</small></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="section-shell footer-inner"><div><a class="brand" href="#top"><span class="brand-mark">L</span><span>LoMED</span></a><p>A Cross-Domain Survey of Longitudinal Modeling Approaches, Evaluation Practices, and Datasets.</p></div><div class="footer-links"><a href="#explorer">Survey explorer</a><a href="survey-data.csv">Dataset CSV</a><a href="#methodology">Methodology</a></div></div>
+  </footer>
+
+  <dialog id="study-dialog"><button class="dialog-close" aria-label="Close study details">×</button><div id="dialog-content"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
