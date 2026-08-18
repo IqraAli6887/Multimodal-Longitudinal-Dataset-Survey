@@ -8,6 +8,18 @@ The survey examines not only **how longitudinal data are modeled**, but also whe
 
 > **Longitudinal data ≠ longitudinal models ≠ longitudinal evidence.**
 
+<p align="center">
+  <img src="lomed-overview.png" alt="LoMED survey overview" width="95%">
+</p>
+
+<p align="center">
+  <em>Overview of LoMED across longitudinal data, modalities, modeling approaches, applications, challenges, and evaluation.</em>
+  <br>
+  <a href="longitudinal%20Paper%20Final%20Diagram.pdf">View full-resolution PDF</a>
+</p>
+
+---
+
 ## Why LoMED?
 
 Longitudinal datasets contain repeated observations of individuals, patients, users, or systems over time. They enable models to reason about progression, transitions, temporal dependencies, and evolving states.
@@ -36,11 +48,13 @@ Across the 149 studies:
 
 When evaluation is assessed only where a validation dimension is relevant to the claims of a study, just:
 
-**71 / 321 = 22.1%**
+### **71 / 321 = 22.1%**
 
 of applicable **study–evaluation pairs** are satisfied.
 
 This shows a substantial gap between the sophistication of longitudinal models and the evidence used to demonstrate longitudinal generalization.
+
+---
 
 ## LoMED Taxonomy
 
@@ -55,6 +69,16 @@ LoMED organizes longitudinal learning through five connected layers:
 **Modeling Inductive Bias**
 ↓
 **Evaluation Requirement**
+
+<p align="center">
+  <img src="taxonomy.png" alt="LoMED longitudinal taxonomy" width="95%">
+</p>
+
+<p align="center">
+  <em>LoMED taxonomy linking observation regime, temporal evidence, temporal objective, modeling inductive bias, and evaluation requirement.</em>
+  <br>
+  <a href="taxonomy.pdf">View full-resolution PDF</a>
+</p>
 
 ### 1. Observation Regime
 
@@ -113,8 +137,6 @@ The surveyed literature includes:
 
 What evidence is needed to substantiate the corresponding longitudinal claim.
 
-For example:
-
 | Longitudinal claim                 | Relevant evaluation              |
 | ---------------------------------- | -------------------------------- |
 | Generalization over time           | Temporal / chronological split   |
@@ -126,6 +148,8 @@ For example:
 | Domain or temporal shift           | Distribution-shift evaluation    |
 
 The central idea is that **evaluation should be conditioned on the claim being made rather than treated as a universal checklist**.
+
+---
 
 ## Claim–Evaluation Gap
 
@@ -151,6 +175,8 @@ These forms of evidence are complementary rather than interchangeable.
 
 The survey finds that they are rarely combined within the same study, even when multiple forms of generalization are implied.
 
+---
+
 ## Missing and Irregular Longitudinal Data
 
 Missing visits, sparse observations, and irregular sampling are recurring characteristics of longitudinal datasets.
@@ -159,13 +185,15 @@ Among studies facing these challenges, many introduce architectural or preproces
 
 LoMED therefore separates:
 
-**model capability**
+**Model capability**
 
 from
 
-**empirical evidence of resilience**.
+**Empirical evidence of resilience**
 
 This distinction applies more broadly throughout the survey.
+
+---
 
 ## Domains Covered
 
@@ -186,11 +214,13 @@ The corpus spans several research communities, including:
 
 This cross-domain perspective allows evaluation practices that are usually studied independently to be compared under a common longitudinal framework.
 
+---
+
 ## Survey Corpus
 
 The literature search covered **IEEE Xplore** and the **ACL Anthology**.
 
-Screening pipeline:
+### Screening Pipeline
 
 **815 retrieved**
 ↓
@@ -200,7 +230,7 @@ Screening pipeline:
 ↓
 **149 included studies**
 
-Final corpus:
+### Final Corpus
 
 * **132 IEEE studies**
 * **17 ACL Anthology studies**
@@ -208,6 +238,8 @@ Final corpus:
 The quantitative survey covers English-language full papers published between **2019 and the search freeze of 15 March 2025**.
 
 Because the corpus is dominated by IEEE studies, aggregate percentages describe the combined IEEE–ACL sample and should not be interpreted as prevalence estimates for longitudinal NLP alone.
+
+---
 
 ## Interactive Study Explorer
 
@@ -231,9 +263,9 @@ Users can search and filter studies by characteristics including:
 
 The complete paper-level coding is also provided for further analysis.
 
-## Research Questions
+---
 
-LoMED addresses four main research questions:
+## Research Questions
 
 **RQ1.** How do longitudinal observation regimes shape the temporal evidence available across domains?
 
@@ -242,6 +274,8 @@ LoMED addresses four main research questions:
 **RQ3.** To what extent are longitudinal claims matched by appropriate temporal, subject-level, robustness, uncertainty, and external evaluation?
 
 **RQ4.** Which methodological gaps currently limit transferable longitudinal modeling?
+
+---
 
 ## Main Takeaway
 
@@ -253,6 +287,8 @@ The more important question is:
 
 LoMED argues for moving from generic evaluation checklists toward **claim-conditioned longitudinal evaluation**, where the validation protocol follows directly from the temporal, subject-level, robustness, uncertainty, transfer, or deployment claim being made.
 
+---
+
 ## Resources
 
 This repository contains:
@@ -260,9 +296,15 @@ This repository contains:
 * the interactive LoMED survey website,
 * the complete coded study collection,
 * downloadable survey data,
-* and supplementary resources accompanying the paper.
+* supplementary figures,
+* and resources accompanying the paper.
 
-The paper link will be added after publication.
+### Figures
+
+* [LoMED Survey Overview](longitudinal%20Paper%20Final%20Diagram.pdf)
+* [LoMED Taxonomy](taxonomy.pdf)
+
+---
 
 ## Paper
 
