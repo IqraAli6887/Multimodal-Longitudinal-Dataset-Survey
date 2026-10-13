@@ -35,6 +35,21 @@ function charts(){
   const areas=Object.entries(ac).sort((a,b)=>b[1]-a[1]).slice(0,6);
   const am=Math.max(1,...areas.map(x=>x[1]));
   $('#area-list').innerHTML=areas.map(([a,c])=>`<div class="area-item"><div>${esc(a)}<div class="area-meter"><i style="--w:${c/am*100}%"></i></div></div><strong>${c}</strong></div>`).join('');
+  donut();
+}
+
+// Source donut: split computed from the data; colours taken from the legend swatches in styles.css.
+function donut(){
+  const n=studies.length; if(!n)return;
+  const ieee=studies.filter(s=>s.source==='IEEE Xplore').length, acl=n-ieee, cut=(100*ieee/n).toFixed(1);
+  const d=$('.donut'), iSw=$('.legend i.ieee'), aSw=$('.legend i.acl');
+  if(d&&iSw&&aSw){
+    const ci=getComputedStyle(iSw).backgroundColor, ca=getComputedStyle(aSw).backgroundColor;
+    d.style.background=`conic-gradient(${ci} 0 ${cut}%, ${ca} ${cut}% 100%)`;
+  }
+  const total=$('.donut strong'); if(total)total.textContent=n;
+  const counts=document.querySelectorAll('.legend p strong');
+  if(counts.length>=2){counts[0].textContent=ieee;counts[1].textContent=acl}
 }
 
 function uniq(key){return [...new Set(studies.map(s=>s[key]).filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),undefined,{numeric:true}))}
