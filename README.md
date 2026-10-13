@@ -2,7 +2,7 @@
 
 **A Cross-Domain Survey of Longitudinal Modeling Approaches, Evaluation Practices, and Datasets**
 
-LoMED is a cross-domain survey of **149 longitudinal modeling studies** spanning computational health, biomedical signal processing, multimodal AI, behavioral analysis, and natural language processing.
+LoMED is a cross-domain survey of **172 longitudinal modeling studies** spanning computational health, biomedical signal processing, multimodal AI, behavioral analysis, and natural language processing.
 
 The survey examines not only **how longitudinal data are modeled**, but also whether the evaluation used in each study provides appropriate evidence for the longitudinal claims being made.
 
@@ -25,20 +25,22 @@ LoMED therefore studies the relationship between **longitudinal modeling claims 
 
 ## Key Findings
 
-Across the 149 studies:
+Across the 172 studies:
 
-* **87.2%** use sequential modeling.
-* Only **8.7%** use temporal train/test splits.
-* Only **4.7%** report prospective validation.
-* External validation remains uncommon.
-* Calibration and uncertainty-aware evaluation are rarely reported.
+* **86.6%** use sequential modeling (149 of 172).
+* Only **11.0%** use temporal train/test splits.
+* Only **4.1%** report prospective validation (7 of 172).
+* External validation remains uncommon (**12.2%**).
+* Calibration is rarely reported (**3.5%**).
 * No study in the surveyed corpus jointly combines **temporal and external validation**.
 
-When evaluation is assessed only where a validation dimension is relevant to the claims of a study, just:
+When evaluation is assessed only where a validation check is required by a study's coded claims or challenges, just:
 
-**71 / 321 = 22.1%**
+**89 / 390 = 22.8%**
 
-of applicable **study–evaluation pairs** are satisfied.
+of required checks are performed, and **65.5%** of studies perform none of their required checks.
+
+Temporal splits are more common in ACL Anthology studies (**26.5%**) than in IEEE Xplore studies (**7.2%**), but remain a minority practice in both.
 
 This shows a substantial gap between the sophistication of longitudinal models and the evidence used to demonstrate longitudinal generalization.
 
@@ -60,37 +62,35 @@ LoMED organizes longitudinal learning through five connected layers:
 
 How repeated observations are collected.
 
-Examples include:
+The survey distinguishes three regimes:
 
-* regular longitudinal cohorts,
-* irregular electronic health records,
-* sparse behavioral histories,
-* asynchronous multimodal observations,
-* repeated conversations and social-media timelines.
+* **scheduled cohorts**, such as ADNI, OASIS, PPMI, and ELSA, with planned visits;
+* **event-driven clinical records**, such as MIMIC and eICU, where observations follow care events;
+* **activity-driven user timelines**, such as Reddit, Twitter, and TalkLife, where observations follow user behavior.
+
+Asynchronous multimodal records cut across all three.
 
 ### 2. Temporal Evidence
 
 What information about change over time is actually available.
 
-Examples include:
+For each regime, LoMED asks three questions:
 
-* repeated visits,
-* chronological histories,
-* unequal time intervals,
-* state sequences,
-* multimodal observations across time.
+* Is the **order** of observations reliable?
+* Are the **gaps** between observations meaningful?
+* Is **change** directly observable, or only inferred?
 
 ### 3. Temporal Objective
 
 What the model attempts to infer from that evidence.
 
-Examples include:
+The survey groups objectives into six families:
 
-* progression prediction,
 * trajectory classification,
-* future-state forecasting,
-* state-transition detection,
-* longitudinal summarization,
+* change and transition detection,
+* forecasting,
+* timeline summarization,
+* longitudinal representation learning,
 * multimodal progression analysis.
 
 ### 4. Modeling Inductive Bias
@@ -99,14 +99,13 @@ How temporal structure is represented computationally.
 
 The surveyed literature includes:
 
-* recurrent neural networks,
-* LSTMs and GRUs,
-* convolutional models,
-* transformers,
+* non-sequential models applied to longitudinal features,
+* recurrent and continuous-time models (RNNs, LSTMs, GRUs, time-aware RNNs, neural ODEs, Hawkes processes),
+* generative and latent-progression models,
+* transformers and pretrained language models, including hierarchical variants,
+* state-space models,
 * large language models,
 * graph-based models,
-* neural ODEs,
-* generative longitudinal models,
 * multimodal fusion architectures.
 
 ### 5. Evaluation Requirement
@@ -149,13 +148,13 @@ One of the main findings of LoMED is that different forms of validation test fun
 
 These forms of evidence are complementary rather than interchangeable.
 
-The survey finds that they are rarely combined within the same study, even when multiple forms of generalization are implied.
+The survey finds that they are rarely combined within the same study: only **10** studies combine subject-level and temporal evaluation, **16** combine subject-level and external evaluation, and **none** combine temporal and external validation.
 
 ## Missing and Irregular Longitudinal Data
 
 Missing visits, sparse observations, and irregular sampling are recurring characteristics of longitudinal datasets.
 
-Among studies facing these challenges, many introduce architectural or preprocessing mechanisms for handling missingness. However, explicitly **handling missing data is not equivalent to demonstrating robustness to missing data**.
+Among the **56** studies facing these challenges, **38** identify a handling strategy, but only **19** both handle the issue and test robustness to it. Explicitly **handling missing data is not equivalent to demonstrating robustness to missing data**.
 
 LoMED therefore separates:
 
@@ -165,7 +164,7 @@ from
 
 **empirical evidence of resilience**.
 
-This distinction applies more broadly throughout the survey.
+The same distinction applies to interpretability: of the **66** studies that report interpretability, only **5** use temporal splits and **1** conducts prospective validation.
 
 ## Domains Covered
 
@@ -188,26 +187,28 @@ This cross-domain perspective allows evaluation practices that are usually studi
 
 ## Survey Corpus
 
-The literature search covered **IEEE Xplore** and the **ACL Anthology**.
+The literature search covered **IEEE Xplore** and the **ACL Anthology** in two search rounds.
 
 Screening pipeline:
 
-**815 retrieved**
+**875 retrieved** (799 IEEE · 76 ACL)
 ↓
-**551 after automated filtering**
+**591 after automated filtering** (536 IEEE · 55 ACL)
 ↓
-**520 after manual screening**
+**555 after manual screening** (511 IEEE · 44 ACL)
 ↓
-**149 included studies**
+**172 included studies** (after removing 2 duplicates)
 
 Final corpus:
 
-* **132 IEEE studies**
-* **17 ACL Anthology studies**
+* **138 IEEE Xplore studies**
+* **34 ACL Anthology studies**
 
-The quantitative survey covers English-language full papers published between **2019 and the search freeze of 15 March 2025**.
+The quantitative survey covers English-language full papers published between **January 2018 and the search freeze of 12 October 2026**; the earliest included study is from 2019. The 2025 and 2026 strata are small and include studies added in the updated search.
 
 Because the corpus is dominated by IEEE studies, aggregate percentages describe the combined IEEE–ACL sample and should not be interpreted as prevalence estimates for longitudinal NLP alone.
+
+All 172 studies were coded by one primary coder; a second reviewer piloted the codebook on 12 studies. Evidence and rationale fields accompany judgment-based labels to keep coding auditable, but they do not substitute for independent double-coding.
 
 ## Interactive Study Explorer
 
@@ -257,12 +258,27 @@ LoMED argues for moving from generic evaluation checklists toward **claim-condit
 
 This repository contains:
 
-* the interactive LoMED survey website,
-* the complete coded study collection,
-* downloadable survey data,
+* the interactive LoMED survey website (`index.html`, `styles.css`, `app.js`),
+* the complete coded study collection (`data/studies.json`),
+* downloadable survey data (`survey-data.csv`, `survey-data.md`),
 * and supplementary resources accompanying the paper.
 
-The paper link will be added after publication.
+### Updating the data
+
+To add newly coded studies and regenerate the downloads, run from the repository root:
+
+```bash
+python merge_survey_data.py data/studies.json new-entries.json
+python export_tables.py data/studies.json
+```
+
+The website computes its validation, year, application, and source charts directly from `data/studies.json`, so they update automatically.
+
+To preview the site locally:
+
+```bash
+python -m http.server
+```
 
 ## Paper
 
